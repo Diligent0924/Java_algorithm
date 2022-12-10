@@ -1,7 +1,6 @@
 package 기초;
 import java.util.ArrayList;
 
-import javax.swing.GroupLayout;
 
 public class 자바어레이 {
     public static void main(String[] args) {
