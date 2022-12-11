@@ -3,9 +3,10 @@ package 골드;
 import java.io.*;
 import java.util.*;
 public class 로봇청소기 {
-    static int [][] delta = {{-1,0},{0,1},{1,0},{0,-1}};
+    static int [][] delta = {{-1,0},{0,1},{1,0},{0,-1}}; // Global 함수로 써도 상관 없음
+    static int N, M;
     // delta를 이용해서 돌리기 위한 함수
-    static int direction(int value){
+    static int direction(int value){ // 음수처리가 안되기 때문에 변경이 필요함.
         switch (value){
             case -1 : return 3;
             case -2 : return 2;
@@ -14,8 +15,8 @@ public class 로봇청소기 {
         return value;
     }
     // 왼쪽으로 4번 돌았을 때 확인
-    static int[] first(int now_i, int now_j, int D, int [][] graph, int N, int M, int direction_count){
-        for (int l = 0; l < direction_count; l++){ // 4방향에 대해서 모두 확인해본다.
+    static int[] first(int now_i, int now_j, int D, int [][] graph, int direction_count){
+        for (int l = 0; l < direction_count; l++){ // 방향에 대해서 모두 확인해본다.
             D -= 1; // 해당 방향으로 둔다. (고정)
             int pro_i = now_i + delta[direction(D%4)][0]; // 앞으로 가게될 지역의 i
             int pro_j = now_j + delta[direction(D%4)][1]; // 앞으로 가게될 지역의 j
@@ -33,6 +34,7 @@ public class 로봇청소기 {
     public static void main(String[] args) throws IOException{
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in)); // 한번에 읽어오기
         StringTokenizer str1 = new StringTokenizer(bf.readLine(), " "); // str1으로 띄어서 읽어오기
+        // str1 = bf.readLine().split(" ");
         int N = Integer.parseInt(str1.nextToken());
         int M = Integer.parseInt(str1.nextToken());
         // 로봇청소기가 있는 칸의 좌표를 확인함
@@ -58,7 +60,7 @@ public class 로봇청소기 {
             // System.out.println();
             result += 1; // result의 개수를 +1씩 해준다.
             graph[now_i][now_j] = 2; // 현재 위치를 청소한 것이라고 판단한다.  
-            int[] result_1 = first(now_i, now_j, D, graph, N, M, 4); // 만약 해당 위치 중 4방향에 갈 수 있는 곳이면 1, 아니면 0       
+            int[] result_1 = first(now_i, now_j, D, graph, 4); // 만약 해당 위치 중 4방향에 갈 수 있는 곳이면 1, 아니면 0       
             if (result_1[0] != -1){
                 now_i = result_1[0];
                 now_j = result_1[1];
@@ -70,7 +72,7 @@ public class 로봇청소기 {
                     now_i = now_i + delta[direction((D-2)%4)][0]; // 뒤로 한칸 빼기 위한 변수(i)
                     now_j = now_j + delta[direction((D-2)%4)][1]; // 뒤로 한칸 빼기 위한 변수(j)
                     if (now_i >= 0 && now_i < N && now_j >= 0 && now_j < M && graph[now_i][now_j] != 1){ // 모든 조건이 통과된다면
-                        int[] result_2 = first(now_i, now_j, D, graph, N, M, 3); // 확인해본다.
+                        int[] result_2 = first(now_i, now_j, D, graph, 3); // 확인해본다.
                         if (result_2[0] != -1){ // 3방향 확인 후 갈 수 있는 자리가 있다면...
                             now_i = result_2[0]; // 해당 위치를 저장한다.
                             now_j = result_2[1]; 
@@ -81,7 +83,7 @@ public class 로봇청소기 {
                     else{ // 더이상 뒤로 갈 곳이 없다면 끝낸다.
                         // System.out.println("---------------");
                         System.out.println(result);
-                        System.exit(result);
+                        System.exit(0); // 0이면 정상 처리 나머지는 비정상처리 (무조건 0으로 해야댐)
                     }
                 }
             }
