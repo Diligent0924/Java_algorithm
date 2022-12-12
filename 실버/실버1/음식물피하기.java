@@ -41,7 +41,7 @@ public class 음식물피하기 {
         }
         int max_count = 0; // 최대 카운트를 확인한다.
         for (int i = 0; i < N; i ++){
-            for (int j = 0; j < N; j++){
+            for (int j = 0; j < M; j++){
                 if (graph[i][j] == 1){
                     count = 0; // count를 항상 초기화해준다.
                     bfs(i,j);

@@ -2,23 +2,25 @@
  * hello
  */
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 public class hello {
     public static void main(String[] args) throws IOException{
-        // int a = System.in.read();
-        // System.in.read();
-        // int b = System.in.read();
-        // System.in.read();
-        // a = a - 48;
-        // b = b - 48;
-        // System.out.println(a+b);
-        int [] points = new int[3];
-        System.out.println(points.length);
-        System.out.println(points[0]);
-        for (int i = 0; i<points.length;i++){
-            points[i] = i+1;
+        List<String> a = new ArrayList<String>();
+        List<String> b = new ArrayList<String>();
+        a.add("1");
+        a.add("2");
+        b.add("1");
+        for (String i : a){
+            System.out.println(i);
         }
-        for (int i = 0; i<points.length;i++){
-            System.out.println(points[i]);
-        }
+        System.out.println(a.indexOf("1"));
+        // String k = new String(a);
+        System.out.println(b);
+        System.out.println(a==b);
+        System.out.println("a" == "a");
+
+        String bb = "abcd";
+        System.out.println(bb.charAt(1));
     }
 }
