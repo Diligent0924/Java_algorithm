@@ -1,6 +1,5 @@
-package 골드.골드4;
+package 골드4;
 
-import java.util.*;
 import java.io.*;
 public class 좋은수열 {
     private static int N;

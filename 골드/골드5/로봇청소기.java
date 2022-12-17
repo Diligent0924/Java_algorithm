@@ -1,4 +1,4 @@
-package 골드;
+package 골드5;
 
 import java.io.*;
 import java.util.*;
