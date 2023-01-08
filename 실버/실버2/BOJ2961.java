@@ -7,7 +7,6 @@ import java.util.StringTokenizer;
 
 public class BOJ2961 {
     private static int N;
-    private static int[] subset_list;
     private static int[][] graph;
     private static long sour;
     private static long sweet;

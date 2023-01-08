@@ -3,7 +3,6 @@
  */
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 public class hello {
     public static void main(String[] args) throws IOException{
@@ -27,7 +26,6 @@ public class hello {
         double k = 1.0;
         System.out.println(g==k);
 
-        LinkedList<Integer> dgg = new LinkedList<Integer>();
         int sd = 1;
         int df = 1;
         System.out.println(sd==df);
